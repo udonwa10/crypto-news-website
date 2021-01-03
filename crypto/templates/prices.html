@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if notfound %}
+        <h3>{{notfound}}</h3>
+    
+        {% else %}
+           
+           {% if crypto.Response %}
+                <h3>Sorry, that {{quote}} doesn't exist. Please Try Again</h3>
+           {% endif %}
+            
+    {% for key,value in crypto.DISPLAY.items %}
+        <div class="card border-info mb-3 p-2 mt-4" style="max-width: rem;">
+            <div class="card-header bg-info">{{key}}</div>
+            <div class="card-body">
+                <strong>Prices :</strong>{{value.USD.PRICE}} <br>
+                <strong>Day High :</strong>{{value.USD.HIGHDAY}} <br>
+                <strong>Day Low :</strong>{{value.USD.LOWDAY}} <br>
+                <strong>Market Cap :</strong>{{value.USD.MKTCAP}} <br>
+            </div>
+        </div>  
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}
